@@ -4,11 +4,11 @@ Here, “fine-tune” means editing reusable instructions and project context. I
 
 ## Discover before prescribing
 
-Ask your agent to inspect the repository policy, package manifests, CI workflows, two nearby examples, and current tests. Have it propose actual paths and commands for the worksheet, with file references. It should not add libraries, rename branches, create accounts, or change infrastructure just to match a template.
+Ask your agent to inspect the repository policy, package manifests, CI workflows, two nearby examples, and current tests before using a skill. It should not add libraries, rename branches, create accounts, or change infrastructure just to match a template.
 
 Use this prompt:
 
-> Read the chosen skill and its project-context worksheet. Inspect this repository read-only. Fill in facts you can establish from code, scripts, and CI, citing paths. Leave unknown facts marked unknown and list the few decisions that need me. Then adapt the skill to our existing workflow. Preserve its task boundary; do not install tools or perform external actions.
+> Read the chosen skill and the repository's existing instruction files. Inspect this repository read-only and follow its actual product, architecture, paths, and commands. Adapt the local installed SKILL.md only if a verified project convention materially changes the reusable procedure. Preserve the skill's task boundary; do not install tools or perform external actions.
 
 ## Separate three kinds of instruction
 
@@ -16,7 +16,7 @@ Use this prompt:
 
 **Procedures** belong in skills: how to review a change, investigate an error, or prepare a test plan.
 
-**Facts** belong in the worksheet or maintained references: paths to schemas, test fixtures, deployed environments, and exact commands. Store credential names or connector names only, never credential values.
+The coding agent's existing repository instructions provide facts such as product purpose, paths, schemas, fixtures, environments, and commands. Skills add reusable procedures. Store credential names or connector names only, never credential values.
 
 ## Choose facts that change decisions
 

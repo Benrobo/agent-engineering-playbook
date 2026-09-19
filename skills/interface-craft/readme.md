@@ -7,7 +7,6 @@ The source page was reviewed in full: 61 recommendations across seven sections. 
 ## Contents
 
 - `SKILL.md`: agent workflow and reference routing.
-- `project-context.md`: project-specific facts to populate.
 - `references/source-review.md`: all 61 coverage IDs and audit procedure.
 - `references/design-direction.md`: choosing a visual identity suited to the product.
 - `references/engineering-judgment.md`: standards, tradeoffs, and exceptions.
@@ -39,7 +38,7 @@ This copy is packaged in the reusable playbook; it has not been automatically in
 
 ## Adapt it
 
-Ask the agent to inspect your project and populate `project-context.md` with verified paths and commands. Review those facts. Add actual examples of your product's visual identity, not just adjectives. Establish whether the task is a new design or refinement within an existing system.
+Ask the agent to inspect the project's own instructions, code, components, and commands before using this skill. Add actual examples of the product's visual identity, not just adjectives. Establish whether the task is a new design or refinement within an existing system.
 
 If you also use a frontend-conventions skill, let it define repository-specific component rules. Use this skill for visual direction, craft decisions, and rendered review. Neither should silently replace the other's scope.
 

@@ -2,6 +2,8 @@
 
 Reusable Markdown skills for taking software work from an issue to a tested, reviewable change. Each skill is independently adaptable. This kit contains procedures, not a trained model, a guarantee of correctness, or an autonomous production operator.
 
+The skills are reusable procedures. The coding agent already receives project context from the repository and its normal instruction files, so the skills stay portable across projects.
+
 Start with **implement-issue**, **write-tests**, **validate-changes**, and **review-changes**. Add the other workflows when you need them. You do not need every integration to use the core kit.
 
 ## Structure
@@ -10,7 +12,7 @@ Every folder under `skills/` contains:
 
 - `SKILL.md`: the instructions the coding agent loads.
 - `readme.md`: requirements, installation, customization, and a trial request.
-- `project-context.md`: a short worksheet for that skill's project-specific facts. Populate it from your repository; an empty field is unknown, not permission to guess.
+- optional `references/`, `scripts/`, and other resources used only by that skill.
 
 The [customization guide](CUSTOMIZE.md) explains how to adapt the kit. The [project policy template](templates/AGENTS.template.md) ties installed skills together. [Project examples](examples/project-adaptations.md) show three different product types without imposing a stack.
 
@@ -36,7 +38,7 @@ python3 install.py write-tests review-changes --project "/absolute/path/to/your-
 python3 install.py --list
 ```
 
-The project directory must already exist. The installer copies the skill and its supporting files, checks required metadata, compares file hashes, and prints the exact destination and invocation. It does not execute skill scripts, modify application code, or install every skill automatically.
+The project directory must already exist. The installer copies the skill and its supporting files, checks required metadata, compares file hashes, and prints the exact destination and invocation. It does not add project files, execute skill scripts, modify application code, or install every skill automatically.
 
 ## Clone, then install
 
@@ -75,17 +77,17 @@ python3 install.py interface-craft --project "/absolute/path/to/your-project" --
 
 After installation, open the target project and invoke `$interface-craft` in Codex or `/interface-craft` in Claude Code. Ask it to describe the loaded workflow before a first real task. If missing, restart the agent and check workspace trust, skill settings, and the printed path. File installation is verified by the script; actual agent activation must be verified in that agent.
 
-Customize the installed copy's `project-context.md`; future replacements preserve old customizations in the backup but do not merge them. To uninstall, move that skill folder out of the discovery directory or remove it after preserving changes you need. Do not remove the entire skills directory.
+The coding agent should inspect the target project's own instructions and source before using an installed skill. If a durable project convention changes the procedure, update that local installed `SKILL.md`; keep the distributable source generic. Future replacements preserve local skill edits in a backup. To uninstall, move that skill folder out of the discovery directory or remove it after preserving changes you need. Do not remove the entire skills directory.
 
 For other agents, use their documented skill location or attach `SKILL.md` and its referenced files directly. This installer supports Codex and Claude Code only.
 
 ## Customize before relying on it
 
 1. Read the chosen skill's `readme.md`.
-2. Fill its `project-context.md` with verified paths, commands, and tool availability.
-3. Edit `SKILL.md` where your project's behavior or workflow differs. Keep the trigger narrow.
+2. Let the coding agent inspect the target project's own instructions, manifests, examples, and commands before using the skill. It already has the project context.
+3. Update only the local installed `SKILL.md` when a durable project convention materially changes the procedure. Keep the distributable source generic.
 4. Merge the relevant parts of `templates/AGENTS.template.md` into your existing project instructions. Do not replace established rules wholesale.
-5. Trial it on a disposable branch with a real small task. Compare the result against acceptance criteria and recorded checks.
+5. Trial the skill on a disposable branch with a real small task. Compare the result against acceptance criteria and recorded checks.
 
 The kit deliberately contains no credential profiles, organization IDs, internal domains, production connection strings, or automatically executable deployment scripts. Supply integrations through your agent's normal connector or CLI configuration; do not paste credentials into Markdown.
 

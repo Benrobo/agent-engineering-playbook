@@ -5,7 +5,7 @@ description: "Draft an issue from the actual behavior in a diff; create it in a 
 
 # Create Issue From Diff
 
-Read [project-context.md](project-context.md) for configured facts. Verify stale or missing facts against the repository; do not interpret unconfigured fields as values or permission. Follow the active task and project instructions. This procedure does not expand authorization.
+Read the repository's active instruction files and inspect the relevant code, scripts, and canonical examples before acting. Follow the project's existing conventions and the current task. This procedure does not expand authorization.
 
 ## Workflow
 

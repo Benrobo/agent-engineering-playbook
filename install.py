@@ -31,7 +31,7 @@ def validate(folder, name):
         raise ValueError('Skill name must match folder: ' + name)
     if not re.search(r'^description:\s*\S.+$', parts[1], re.M):
         raise ValueError('Missing one-line description: ' + name)
-    for required in ('readme.md', 'project-context.md'):
+    for required in ('readme.md',):
         if not (folder / required).is_file():
             raise ValueError('Missing ' + required + ': ' + name)
     return manifest(folder)

@@ -36,16 +36,21 @@ class InstallerTests(unittest.TestCase):
 
     def test_local_edits_preserved_then_backed_up(self):
         self.assertEqual(self.run_install().returncode, 0)
-        target = self.project/'.agents/skills/interface-craft/project-context.md'
-        target.write_text('My customized project context')
+        target = self.project/'.agents/skills/interface-craft/SKILL.md'
+        target.write_text('My customized local skill')
         blocked = self.run_install()
         self.assertNotEqual(blocked.returncode, 0)
-        self.assertEqual(target.read_text(), 'My customized project context')
+        self.assertEqual(target.read_text(), 'My customized local skill')
         replaced = self.run_install('--replace')
         self.assertEqual(replaced.returncode, 0, replaced.stderr)
-        backups = list((self.project/'.agents/skill-backups').glob('*/project-context.md'))
+        backups = list((self.project/'.agents/skill-backups').glob('*/SKILL.md'))
         self.assertEqual(len(backups), 1)
-        self.assertEqual(backups[0].read_text(), 'My customized project context')
+        self.assertEqual(backups[0].read_text(), 'My customized local skill')
+
+    def test_install_does_not_add_project_files(self):
+        result = self.run_install()
+        self.assertEqual(result.returncode, 0, result.stderr)
+        self.assertEqual({p.name for p in self.project.iterdir()}, {'.agents'})
 
     def test_conflict_preflight_prevents_partial_both_install(self):
         target = self.project/'.claude/skills/interface-craft'

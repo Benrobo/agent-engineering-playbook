@@ -7,7 +7,7 @@ description: Design, implement, and refine clean, distinctive web interfaces wit
 
 Deliver an interface that suits the product, works through its important states, and has a recognizable visual point of view. A visually attractive screenshot alone is not completion.
 
-Read [project-context.md](project-context.md). Discover missing facts from the project before choosing libraries, fonts, or commands. This skill does not authorize publication, purchases, or unrelated changes.
+Read the repository's active instruction files and inspect the relevant code, scripts, and canonical examples before choosing libraries, fonts, or commands. This skill does not authorize publication, purchases, or unrelated changes.
 
 ## 1. Understand the screen
 
