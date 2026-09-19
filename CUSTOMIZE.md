@@ -1,6 +1,6 @@
 # Adapt a skill to your own project
 
-Here, “fine-tune” means editing reusable instructions and project context. It does not update model weights.
+Here, “fine-tune” means editing reusable instructions to match verified conventions in a target repository. It does not update model weights.
 
 ## Discover before prescribing
 

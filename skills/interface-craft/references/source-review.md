@@ -26,4 +26,4 @@ Give each ID its own row. Use **pass**, **change**, **not applicable**, or **unv
 
 Use IDs only as stable references to this dated page order. If the page changes, reconcile added, removed, or reordered entries before claiming complete coverage. If the page cannot be loaded, use the rest of this skill but disclose that the detailed source audit is incomplete; never invent the missing advice.
 
-The skill intentionally retains links rather than redistributing the site's complete text, images, demos, or code. A self-contained project adaptation should record the decisions that matter to that project, not copy the source wholesale.
+The skill intentionally retains links rather than redistributing the site's complete text, images, demos, or code. Record the decisions that matter to the target interface instead of copying the source wholesale.
