@@ -1,5 +1,15 @@
 # Validation
 
-Checked 18 September 2026. All 17 skills passed the skill frontmatter and scaffold validator. Every skill includes its own readme and context worksheet; local Markdown links resolve. The public kit was checked for source-organization identifiers. No source scripts, credentials, or private payloads are included.
+Checked 18 September 2026. The original 17 skills and the added interface-craft skill passed the skill frontmatter/scaffold validator. Every skill includes a readme and context worksheet. Local package Markdown links resolve.
 
-These are unconfigured reusable procedures, not a tested integration with your particular project. Each readme includes a realistic trial and expected behavior. Provider tools, commands, and end-to-end agent behavior must be checked after project adaptation. No skills were automatically installed into another repository.
+The interface source page was read in full: 61 entries across seven sections. Its public text and accessible demo structure were inspected, with a representative nested-shape demo visually checked. This is not a claim that all interactive demos or every browser combination were tested. The package contains an original workflow and compact source index, not copies of the site's full examples or paid resources.
+
+The installer passed six isolated behavioral tests: complete installation for both agents, idempotence, dry-run behavior, preservation/backup of local changes, conflict preflight, invalid-name rejection, and symlink protection (some are combined within one test). It compares installed file hashes. It does not verify runtime agent activation.
+
+Run installer tests:
+
+```sh
+python3 -m unittest discover -s tests -v
+```
+
+Skills remain project-adaptable procedures, not validated integrations with every project. Each readme provides trial scenarios. Configure real project facts and evaluate behavior before relying on them. No private source scripts, credentials, or customer payloads are included.

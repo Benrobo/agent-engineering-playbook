@@ -14,20 +14,70 @@ Every folder under `skills/` contains:
 
 The [customization guide](CUSTOMIZE.md) explains how to adapt the kit. The [project policy template](templates/AGENTS.template.md) ties installed skills together. [Project examples](examples/project-adaptations.md) show three different product types without imposing a stack.
 
-## Install one skill
+## Install a skill into your project
 
-From the root of the project you want to improve, copy a chosen folder. These commands assume the downloaded playbook is in a sibling directory. Adjust that source path before running. If the destination already exists, compare and merge it rather than replacing it.
+Requirements: Python 3.9+ and a local copy of this playbook. Git is needed only for the clone step. No Python packages are required. Read the skill before installing it.
+
+Run this from the playbook folder, replacing the project path:
 
 ```sh
-mkdir -p .agents/skills
-cp -R ../agent-engineering-playbook/skills/review-changes .agents/skills/review-changes
+python3 install.py interface-craft --project "/absolute/path/to/your-project" --agent both
 ```
 
-For Codex, repository skills live in `.agents/skills/<name>/SKILL.md`; invoke a skill explicitly as `$review-changes` or let its description guide discovery. See [official skill documentation](https://learn.chatgpt.com/docs/build-skills).
+This actually installs and verifies the complete skill in both agent discovery folders:
 
-For Claude Code, copy into `.claude/skills/<name>/` and invoke `/review-changes`. Keep one maintained source if you use both agents. See [Claude Code skills](https://code.claude.com/docs/en/skills).
+- Codex: `your-project/.agents/skills/interface-craft/`
+- Claude Code: `your-project/.claude/skills/interface-craft/`
 
-For another coding agent, check its own current skill support. If it does not load `SKILL.md`, attach that file and its populated `project-context.md` to the task and explicitly ask it to follow them. Do not assume it scans either directory.
+Choose `--agent codex` or `--agent claude` if you use one agent. Install several skills by listing their names:
+
+```sh
+python3 install.py write-tests review-changes --project "/absolute/path/to/your-project" --agent codex
+python3 install.py --list
+```
+
+The project directory must already exist. The installer copies the skill and its supporting files, checks required metadata, compares file hashes, and prints the exact destination and invocation. It does not execute skill scripts, modify application code, or install every skill automatically.
+
+## Clone, then install
+
+When this playbook is published in Git, substitute its real repository URL below. There is no published URL configured in this local package yet. Cloning downloads the source; the installer performs agent setup.
+
+```sh
+git clone "YOUR_REPOSITORY_URL" "$HOME/agent-engineering-playbook"
+python3 "$HOME/agent-engineering-playbook/install.py" interface-craft --project "/absolute/path/to/your-project" --agent both
+```
+
+If you downloaded the ZIP instead, extract it and run the same installer from the extracted folder. The installed skill is a standalone copy and does not depend on keeping the clone or ZIP extraction in place.
+
+## Personal installation
+
+To make a skill available across your local projects:
+
+```sh
+python3 install.py interface-craft --user --agent both
+```
+
+This uses `~/.agents/skills/` for Codex and `~/.claude/skills/` for Claude Code. Project and personal locations are documented by [OpenAI](https://learn.chatgpt.com/docs/build-skills) and [Anthropic](https://code.claude.com/docs/en/skills). Avoid installing the same skill at multiple scopes unless you intend the agent-specific discovery behavior.
+
+## Verify, update, and remove
+
+Preview destinations without writing:
+
+```sh
+python3 install.py interface-craft --project "/absolute/path/to/your-project" --agent both --dry-run
+```
+
+An identical installation is a verified no-op. Different existing files are preserved unless you explicitly use `--replace`; that option saves a backup outside the skill discovery directory before replacing the installed copy. Review local customizations first:
+
+```sh
+python3 install.py interface-craft --project "/absolute/path/to/your-project" --agent both --replace
+```
+
+After installation, open the target project and invoke `$interface-craft` in Codex or `/interface-craft` in Claude Code. Ask it to describe the loaded workflow before a first real task. If missing, restart the agent and check workspace trust, skill settings, and the printed path. File installation is verified by the script; actual agent activation must be verified in that agent.
+
+Customize the installed copy's `project-context.md`; future replacements preserve old customizations in the backup but do not merge them. To uninstall, move that skill folder out of the discovery directory or remove it after preserving changes you need. Do not remove the entire skills directory.
+
+For other agents, use their documented skill location or attach `SKILL.md` and its referenced files directly. This installer supports Codex and Claude Code only.
 
 ## Customize before relying on it
 
@@ -44,6 +94,7 @@ The kit deliberately contains no credential profiles, organization IDs, internal
 | Skill | Intended job |
 | --- | --- |
 | [implement-issue](skills/implement-issue/readme.md) | Turn a scoped issue into an implemented change |
+| [interface-craft](skills/interface-craft/readme.md) | Design and polish distinctive interfaces with a complete source-review workflow |
 | [frontend-conventions](skills/frontend-conventions/readme.md) | Follow the project's UI and form patterns |
 | [api-contracts](skills/api-contracts/readme.md) | Change API validation, handlers, and consumers together |
 | [write-tests](skills/write-tests/readme.md) | Test behavior and regressions at useful boundaries |
@@ -65,4 +116,4 @@ The kit deliberately contains no credential profiles, organization IDs, internal
 
 A skill should reduce repeated explanation and improve observable task outcomes. Useful evidence includes a reproduced bug, a failing-then-passing regression test, a review finding tied to a real code path, or a preview verified at the intended revision. A model saying “looks good” is not validation.
 
-The content is written as generic, independently adaptable guidance. No company repository, scripts, or private payloads are included. Review your custom additions before sharing the folder on X or elsewhere. This kit has not been installed into your projects automatically.
+The content is written as generic, independently adaptable guidance. No company repository, scripts, or private payloads are included. Review your custom additions before sharing the folder on X or elsewhere. Installation is explicit and selective; the installer only installs the skills and scope you name.
