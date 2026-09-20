@@ -29,6 +29,33 @@ class InstallerTests(unittest.TestCase):
         self.assertEqual(second.returncode, 0, second.stderr)
         self.assertIn('Already installed', second.stdout)
 
+    def test_all_installs_every_skill(self):
+        result = subprocess.run(
+            [sys.executable, str(ROOT / 'install.py'), '--all', '--project', str(self.project)],
+            capture_output=True,
+            text=True,
+        )
+        self.assertEqual(result.returncode, 0, result.stderr)
+        expected = {path.name for path in (ROOT / 'skills').iterdir() if (path / 'SKILL.md').is_file()}
+        installed = {path.name for path in (self.project / '.agents/skills').iterdir()}
+        self.assertEqual(installed, expected)
+
+    def test_all_cannot_be_combined_with_skill_names(self):
+        result = subprocess.run(
+            [
+                sys.executable,
+                str(ROOT / 'install.py'),
+                'interface-craft',
+                '--all',
+                '--project',
+                str(self.project),
+            ],
+            capture_output=True,
+            text=True,
+        )
+        self.assertNotEqual(result.returncode, 0)
+        self.assertIn('use --all or skill names', result.stderr)
+
     def test_dry_run_writes_nothing(self):
         result = self.run_install('--dry-run')
         self.assertEqual(result.returncode, 0, result.stderr)

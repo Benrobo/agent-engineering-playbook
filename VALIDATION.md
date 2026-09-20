@@ -4,7 +4,7 @@ Checked 20 September 2026. The 19 skills, including interface-craft and clean-co
 
 The interface source page was read in full: 61 entries across seven sections. Its public text and accessible demo structure were inspected, with a representative nested-shape demo visually checked. This is not a claim that all interactive demos or every browser combination were tested. The package contains an original workflow and compact source index, not copies of the site's full examples or paid resources.
 
-The installer passed seven isolated behavioral tests after this cleanup. It compares installed file hashes and does not verify runtime agent activation.
+The installer passed nine isolated behavioral tests after this cleanup. It compares installed file hashes and does not verify runtime agent activation.
 
 Run installer tests:
 

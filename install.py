@@ -40,6 +40,7 @@ def validate(folder, name):
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('skills', nargs='*', help='Skill folder names; installs only these skills')
+    parser.add_argument('--all', action='store_true', help='Install every available skill')
     parser.add_argument('--list', action='store_true', help='List available skills')
     parser.add_argument('--agent', choices=['codex', 'claude', 'both'], default='codex')
     scope = parser.add_mutually_exclusive_group()
@@ -51,14 +52,23 @@ def main():
     if args.list:
         print('\n'.join(sorted(p.name for p in (ROOT / 'skills').iterdir() if (p / 'SKILL.md').is_file())))
         return 0
-    if not args.skills or not (args.project or args.user):
-        parser.error('choose skill names and either --project PATH or --user')
+    if args.all and args.skills:
+        parser.error('use --all or skill names, not both')
+    if not args.all and not args.skills:
+        parser.error('choose skill names or --all')
+    if not (args.project or args.user):
+        parser.error('choose either --project PATH or --user')
     base = args.project.expanduser().resolve() if args.project else Path.home()
     if not base.is_dir():
         parser.error('project directory must already exist: ' + str(base))
     agents = ['codex', 'claude'] if args.agent == 'both' else [args.agent]
     plans = []
-    for name in dict.fromkeys(args.skills):
+    skill_names = (
+        sorted(p.name for p in (ROOT / 'skills').iterdir() if (p / 'SKILL.md').is_file())
+        if args.all
+        else dict.fromkeys(args.skills)
+    )
+    for name in skill_names:
         if not re.fullmatch(r'[a-z0-9]+(?:-[a-z0-9]+)*', name):
             parser.error('invalid skill name: ' + name)
         source = ROOT / 'skills' / name

@@ -38,7 +38,16 @@ python3 install.py write-tests review-changes --project "/absolute/path/to/your-
 python3 install.py --list
 ```
 
-The project directory must already exist. The installer copies the skill and its supporting files, checks required metadata, compares file hashes, and prints the exact destination and invocation. It does not add project files, execute skill scripts, modify application code, or install every skill automatically.
+Install the complete playbook with `--all`:
+
+```sh
+python3 install.py --all --project "/absolute/path/to/your-project" --agent both
+```
+
+Use `--all` with `--user` to make every skill available across your local
+projects. It cannot be combined with individual skill names.
+
+The project directory must already exist. The installer copies the selected skills and their supporting files, checks required metadata, compares file hashes, and prints the exact destination and invocation. It does not add project files, execute skill scripts, or modify application code.
 
 ## Clone, then install
 
@@ -57,6 +66,12 @@ To make a skill available across your local projects:
 
 ```sh
 python3 install.py interface-craft --user --agent both
+```
+
+To install every skill at user scope:
+
+```sh
+python3 install.py --all --user --agent both
 ```
 
 This uses `~/.agents/skills/` for Codex and `~/.claude/skills/` for Claude Code. Project and personal locations are documented by [OpenAI](https://learn.chatgpt.com/docs/build-skills) and [Anthropic](https://code.claude.com/docs/en/skills). Avoid installing the same skill at multiple scopes unless you intend the agent-specific discovery behavior.
