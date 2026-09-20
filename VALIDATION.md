@@ -1,6 +1,6 @@
 # Validation
 
-Checked 19 September 2026. The original 17 skills and the added interface-craft skill passed the skill frontmatter/scaffold validator. Every skill includes a readme and keeps its procedure self-contained. Local package Markdown links resolve.
+Checked 20 September 2026. The 19 skills, including interface-craft and clean-code-patterns, passed the skill frontmatter/scaffold validator. Every skill includes a readme and keeps its procedure self-contained. Local package Markdown links resolve.
 
 The interface source page was read in full: 61 entries across seven sections. Its public text and accessible demo structure were inspected, with a representative nested-shape demo visually checked. This is not a claim that all interactive demos or every browser combination were tested. The package contains an original workflow and compact source index, not copies of the site's full examples or paid resources.
 

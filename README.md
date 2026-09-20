@@ -96,6 +96,7 @@ The kit deliberately contains no credential profiles, organization IDs, internal
 | Skill | Intended job |
 | --- | --- |
 | [implement-issue](skills/implement-issue/readme.md) | Turn a scoped issue into an implemented change |
+| [clean-code-patterns](skills/clean-code-patterns/readme.md) | Keep code understandable, modular, readable, and appropriately documented |
 | [interface-craft](skills/interface-craft/readme.md) | Design and polish distinctive interfaces with a complete source-review workflow |
 | [frontend-conventions](skills/frontend-conventions/readme.md) | Follow the project's UI and form patterns |
 | [api-contracts](skills/api-contracts/readme.md) | Change API validation, handlers, and consumers together |
