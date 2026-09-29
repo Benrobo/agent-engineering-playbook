@@ -1,7 +1,8 @@
 # Documentation and comments
 
-Use this reference when deciding whether code needs a comment, JSDoc, a
-readme, or a design note.
+Use this reference when deciding whether code needs a comment, API documentation,
+a readme, or a design note. Syntax below illustrates TypeScript; use the target
+language's documentation conventions elsewhere.
 
 ## Decide whether to write prose
 
@@ -24,20 +25,16 @@ public contract, write the smallest durable explanation.
 
 ```ts
 /**
- * @description Rejects a replayed event after the provider's delivery window.
- * @param event The provider event to check.
- * @param now The current time to compare against the event's expiration.
- * @returns True if the event is expired and should be ignored.
- *
- * some more info if needed, but keep it concise and relevant
+ * Treats an event as expired at the exact deadline, using the provider's
+ * timestamp precision. The caller supplies the clock for deterministic replay.
  */
 export function isExpiredEvent(event: ProviderEvent, now: Date): boolean {
   return event.expiresAt <= now;
 }
 
-// The provider can deliver the same event twice while retrying a timeout.
-// The idempotency check must happen before the side effect.
-if (await eventStore.hasProcessed(event.id)) return;
+// Claim and record the event atomically so concurrent retries cannot both
+// perform the durable change.
+await eventStore.applyOnce(event.id, change);
 ```
 
 The first comment documents a caller-facing contract. The second records a

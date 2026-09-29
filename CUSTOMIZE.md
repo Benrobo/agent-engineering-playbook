@@ -4,7 +4,7 @@ Here, “fine-tune” means editing reusable instructions to match verified conv
 
 ## Discover before prescribing
 
-Ask your agent to inspect the repository policy, package manifests, CI workflows, two nearby examples, and current tests before using a skill. It should not add libraries, rename branches, create accounts, or change infrastructure just to match a template.
+Ask your agent to inspect the repository policy, package manifests, CI workflows, relevant maintained examples, and current tests before using a skill. It should not add libraries, rename branches, create accounts, or change infrastructure just to match a template.
 
 Use this prompt:
 
@@ -50,3 +50,17 @@ For agent runtimes without delegation, the review-loop skill supports sequential
 Before sharing a customized kit, remove company/client names, issue keys, internal URLs, cloud resource identifiers, local user paths, raw logs, customer records, and credential examples. Replace scripts with original generic implementations or documented setup when redistribution rights are unclear. Keep real product claims in your professional context document, not in public templates.
 
 Keep a short local evaluation note: task, revision, expected behavior, observed outcome, and what changed in the skill. Re-test after material changes. Passing a frontmatter validator only verifies packaging, not engineering judgment.
+
+## Preserve judgment when adapting external skills
+
+Keep the decision criteria and discard source-specific defaults that the target
+project does not support. A library mandate, folder recipe, animation value, or
+fixed audit size is not portable merely because it appears in a popular skill.
+Use evidence to decide ownership, verify changes in the actual runtime, and keep
+source-specific details in conditional references. Do not disable automatic
+selection unless an explicit-only skill is actually requested.
+
+For UI work, select only the guidance that changes the current decision. A small
+form change may need existing conventions and browser verification; it does not
+need a full design-system audit or a new motion library. Consult [SOURCES.md](SOURCES.md)
+for the choices made in this collection.

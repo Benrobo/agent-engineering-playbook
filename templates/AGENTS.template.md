@@ -10,7 +10,9 @@ Document the package manager/runtime, repository map, canonical examples, test c
 
 - Define the requested result and acceptance criteria before substantial changes.
 - Read applicable local conventions and trace affected code before editing.
+- Use `codebase-architecture` when ownership or reuse boundaries need a decision, and `clean-code-patterns` for implementation clarity, when installed.
 - Use `frontend-conventions` for UI work and `api-contracts` for API boundary changes when those skills are installed.
+- For visual design use `interface-craft`; verify web flows with the available browser, preferably in-app unless the user selected another. Add installed accessibility, motion, or performance skills only when relevant. Use native runtime checks for native UI.
 - Use `write-tests` for behavior changes that benefit from regression coverage and `validate-changes` to select relevant checks.
 - Use `review-changes` when review is requested. Use `agent-review-loop` only when a repeated review/fix workflow is requested and delegation is permitted, or label sequential self-review explicitly.
 - Use `pr-ready` for a requested PR handoff. Readiness does not itself grant permission to push, publish, merge, deploy, or change production state.

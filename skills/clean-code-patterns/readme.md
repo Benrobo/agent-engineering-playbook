@@ -41,7 +41,7 @@ the project's actual naming, import, error, test, and documentation rules.
 Prompt:
 
 > Use `$clean-code-patterns` for this task. Read the repository instructions
-> and two nearby examples first. Choose the owning domain and smallest clear
+> and relevant maintained examples first. Choose the owning domain and smallest clear
 > design, follow the existing formatter and naming conventions, add comments
 > only for non-obvious why or constraints, and run the focused checks. Explain
 > any tradeoff that affects future reuse.
@@ -66,3 +66,10 @@ Handbook's modules guide](https://www.typescriptlang.org/docs/handbook/2/modules
 and the [TypeScript contributor coding guidelines](https://github.com/microsoft/TypeScript/wiki/Coding-guidelines).
 Those references inform the skill; local project rules still decide the final
 format and architecture.
+
+## Portable use
+
+Normal automatic selection is enabled where the agent supports it; the invocation
+examples are optional ways to request the skill. Infer paths, commands, stack,
+and scope from the target repository. Apply only relevant checks, and preserve
+existing user authorization rather than asking again because a skill was loaded.

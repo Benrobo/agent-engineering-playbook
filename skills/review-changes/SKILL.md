@@ -5,12 +5,12 @@ description: "Review a defined diff for actionable behavioral defects with concr
 
 # Review Changes
 
-Read the repository's active instruction files and inspect the relevant code, scripts, and canonical examples before acting. Follow the project's existing conventions and the current task. This procedure does not expand authorization.
+Read the repository's active instruction files and inspect the relevant code, scripts, and canonical examples before acting. Scale the workflow to the task and evidence; use the project's actual tools and conventions. Existing user authorization remains valid, and this procedure does not expand it.
 
 ## Workflow
 
 1. Establish the requested diff and base. Prefer the explicit base, then the actual PR base; discover the repository default if needed rather than assuming a branch name. Include working changes only when in scope.
 2. Read the issue intent and trace changed paths into callers, data models, and tests. Prioritize correctness, authorization, data integrity, concurrency, and regressions over personal style preferences.
-3. Report only actionable findings tied to a concrete trigger and outcome. Include severity, precise file/line, why it fails, and a minimal fix direction. Distinguish hypotheses from established defects.
+3. Report only actionable findings tied to a concrete trigger and outcome. Test each candidate against existing guards, callers, and intentional behavior, and consolidate symptoms with the same cause. Include severity, precise file/line, why it fails, and a minimal fix direction. Distinguish hypotheses from established defects.
 4. Consider unnecessary complexity and dead code when they cause a material problem. Respect intentionally accepted findings unless new facts alter their impact.
 5. State coverage limits and the reviewed revision. No findings is not proof of correctness. Do not fix, approve, comment externally, or publish unless the user requested those actions.

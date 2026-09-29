@@ -5,12 +5,12 @@ description: "Audit measured SQL workload and connect expensive queries to appli
 
 # Audit Slow Queries
 
-Read the repository's active instruction files and inspect the relevant code, scripts, and canonical examples before acting. Follow the project's existing conventions and the current task. This procedure does not expand authorization.
+Read the repository's active instruction files and inspect the relevant code, scripts, and canonical examples before acting. Scale the workflow to the task and evidence; use the project's actual tools and conventions. Existing user authorization remains valid, and this procedure does not expand it.
 
 ## Workflow
 
 1. Confirm the database and observation window. Use an existing read-only statistics source; do not default to production or request broad credentials.
 2. Rank normalized queries by total cost as well as per-call latency, calls, and waits. Distinguish cumulative load from isolated slow execution and separate maintenance noise.
-3. Trace high-impact query shapes to code, indexes, cardinality, and calling frequency. Explain the evidence for each suspected bottleneck.
+3. Trace high-impact query shapes to code, indexes, cardinality, and calling frequency. Compare representative parameters and data sizes; cache state, locks, and connection waits can dominate time without an inefficient query plan. Explain the evidence for each suspected bottleneck.
 4. Prefer existing plans or non-executing EXPLAIN where appropriate. EXPLAIN ANALYZE executes a query; use it only in an authorized safe environment with bounded cost and side effects understood.
 5. Recommend query/index/application changes with expected benefit, tradeoffs, and a measurement plan. Do not execute schema changes, rewrite data, or run unbounded live queries during the audit.

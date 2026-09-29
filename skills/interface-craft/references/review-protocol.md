@@ -1,5 +1,9 @@
 # Review the actual interface
 
+## Establish the browser session
+
+Use the selected browser or an available in-app browser and its current tool documentation. Identify the actual server URL and build under test. Inspect current page state before selecting controls and obtain fresh observations after state changes. Wait for the relevant outcome, not arbitrary sleeps. Keep viewport overrides temporary and preserve unrelated tabs or processes.
+
 ## Visual pass
 
 Inspect a representative wide layout and the narrowest supported layout. Add intermediate widths where the composition changes. Use actual content and a stress sample. Look for unintended scrolling, clipped controls, inconsistent density, displaced overlays, and an unclear primary action.
@@ -20,7 +24,7 @@ Run the repository's relevant lint, type, and behavior checks. Avoid installing 
 
 ## Full source audit
 
-When comprehensive polish is requested, complete every row defined in source-review.md. Associate each applicable entry with an actual component, route, or global rule. “Looks fine” is insufficient evidence for something that requires interaction or measurement.
+Only when an audit against the named Interfaces cheat sheet is requested, complete the applicable source coverage described in source-review.md. For general polish, choose evidence relevant to the requested surface. Associate each applicable entry with an actual component, route, or global rule. “Looks fine” is insufficient evidence for something that requires interaction or measurement.
 
 ## Finding format
 

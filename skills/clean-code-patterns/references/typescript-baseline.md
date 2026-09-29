@@ -7,7 +7,7 @@ base.
 
 ## Modules and exports
 
-Use the project's ES module convention and keep each module's public surface
+Use the project's module convention and keep each module's public surface
 deliberate. Export a symbol when another boundary needs it; keep implementation
 helpers private. Prefer named exports when the repository uses them because
 they make the dependency visible and reduce accidental default-export churn.
@@ -42,6 +42,11 @@ resolution and runtime.
   caller observes loading, failure, cancellation, retry, and partial success.
 
 ## Names
+
+Keep ordinary imports at the established module boundary. Use dynamic loading
+when it provides a real runtime or lazy-loading boundary, and name intermediate
+results when they make asynchronous work clearer. Do not rewrite valid module
+syntax or add temporary variables mechanically.
 
 Use the repository's casing and file suffixes. Names should express the domain
 role (`eligibleRecipients`, `parseWebhookEvent`, `NotificationPolicy`) rather

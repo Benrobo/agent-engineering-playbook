@@ -1,6 +1,6 @@
 # A practical playbook for coding agents
 
-Reusable Markdown skills for taking software work from an issue to a tested, reviewable change. Each skill is independently adaptable. This kit contains procedures, not a trained model, a guarantee of correctness, or an autonomous production operator.
+Reusable Markdown skills for taking software work from an issue to a tested, reviewable change. Each skill is independently adaptable. The catalog contains 25 focused skills. This kit contains procedures, not a trained model, a guarantee of correctness, or an autonomous production operator.
 
 The skills are reusable procedures. The coding agent already receives project context from the repository and its normal instruction files, so the skills stay portable across projects.
 
@@ -110,9 +110,15 @@ The kit deliberately contains no credential profiles, organization IDs, internal
 
 | Skill | Intended job |
 | --- | --- |
+| [codebase-architecture](skills/codebase-architecture/readme.md) | Infer owners, public boundaries, and appropriate reuse |
+| [browser-ui-validation](skills/browser-ui-validation/readme.md) | Verify rendered web flows using the available browser, preferably in-app |
+| [accessibility-review](skills/accessibility-review/readme.md) | Find and fix task barriers with scoped accessibility evidence |
+| [interaction-motion](skills/interaction-motion/readme.md) | Refine purposeful, interruptible UI motion |
+| [frontend-performance](skills/frontend-performance/readme.md) | Diagnose frontend bottlenecks and measure improvements |
+| [debug-root-cause](skills/debug-root-cause/readme.md) | Test explanations for bugs and failures |
 | [implement-issue](skills/implement-issue/readme.md) | Turn a scoped issue into an implemented change |
 | [clean-code-patterns](skills/clean-code-patterns/readme.md) | Keep code understandable, modular, readable, and appropriately documented |
-| [interface-craft](skills/interface-craft/readme.md) | Design and polish distinctive interfaces with a complete source-review workflow |
+| [interface-craft](skills/interface-craft/readme.md) | Design and polish interfaces with rendered evidence and optional source audits |
 | [frontend-conventions](skills/frontend-conventions/readme.md) | Follow the project's UI and form patterns |
 | [api-contracts](skills/api-contracts/readme.md) | Change API validation, handlers, and consumers together |
 | [write-tests](skills/write-tests/readme.md) | Test behavior and regressions at useful boundaries |
@@ -130,8 +136,28 @@ The kit deliberately contains no credential profiles, organization IDs, internal
 | [audit-slow-queries](skills/audit-slow-queries/readme.md) | Relate measured database load to application code |
 | [investigate-integration](skills/investigate-integration/readme.md) | Trace provider events through local state and business rules |
 
+## Choose guidance by the work
+
+Use `codebase-architecture` for ownership and dependency decisions and
+`clean-code-patterns` for implementation clarity. For UI work, use
+`frontend-conventions` for existing product behavior, `interface-craft` for
+visual design, and `browser-ui-validation` for the running web flow. Add
+`accessibility-review`, `interaction-motion`, or `frontend-performance` when
+the task needs that specialized perspective. `debug-root-cause` covers uncertain
+failures beyond production telemetry investigations.
+
+Skills allow normal automatic discovery where supported; explicit invocation
+is optional. Their names and descriptions narrow selection. They do not require
+loading the entire collection, installing a particular stack, or using another
+skill that is not installed. Tool-specific details live in optional references.
+
+The [source and adaptation record](SOURCES.md) explains the architecture
+extraction and research from skills.sh and ui-skills.com. Useful principles were
+rewritten into portable guidance; mandatory frameworks, private paths, exact
+visual recipes, and forced handoffs were not imported.
+
 ## What counts as success
 
 A skill should reduce repeated explanation and improve observable task outcomes. Useful evidence includes a reproduced bug, a failing-then-passing regression test, a review finding tied to a real code path, or a preview verified at the intended revision. A model saying “looks good” is not validation.
 
-The content is written as generic, independently adaptable guidance. No company repository, scripts, or private payloads are included. Review your custom additions before sharing the folder on X or elsewhere. Installation is explicit and selective; the installer only installs the skills and scope you name.
+The content is written as generic, independently adaptable guidance. No private project identifiers, source scripts, or payloads are included. Review your custom additions before sharing the folder on X or elsewhere. Installation is explicit and selective; the installer only installs the skills and scope you name.

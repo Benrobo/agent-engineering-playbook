@@ -1,6 +1,6 @@
 # Interface craft
 
-A reusable skill for building clean, distinctive interfaces and reviewing the details that make them feel finished. It combines an original product-design workflow with a linked, complete review index for the public [Interfaces cheat sheet](https://interfaces.dev/cheat-sheet).
+A reusable skill for building clean, distinctive interfaces and reviewing the details that make them feel finished. It combines an original product-design workflow with an optional dated review index for the public [Interfaces cheat sheet](https://interfaces.dev/cheat-sheet).
 
 The source page was reviewed in full: 61 recommendations across seven sections. This package does not reproduce the site's full text or demos, and is not its paid agent skill. Detailed source review requires access to that public page; the original design and implementation workflow remains usable offline.
 
@@ -11,10 +11,11 @@ The source page was reviewed in full: 61 recommendations across seven sections. 
 - `references/design-direction.md`: choosing a visual identity suited to the product.
 - `references/engineering-judgment.md`: standards, tradeoffs, and exceptions.
 - `references/review-protocol.md`: visual, behavioral, and code verification.
+- `references/craft-decisions.md`: portable UI Skills synthesis and evidence-based polish.
 
 ## Requirements
 
-A coding agent that can read Markdown, an existing project or clear build brief, and the project's usual development environment. Browser access is needed to inspect source demos and verify rendered web output. No paid subscription, API key, design library, or new framework is required by this skill. Use the libraries already appropriate for your project.
+A coding agent that can read Markdown, an existing project or clear build brief, and the project's usual development environment. Browser access is needed to inspect source demos and verify rendered web output. Prefer an available in-app browser unless the user chooses another; the optional browser-ui-validation skill provides deeper session and verification guidance. No paid subscription, API key, design library, or new framework is required by this skill. Use the libraries already appropriate for your project.
 
 ## Install
 
@@ -61,3 +62,10 @@ Try three small tasks before relying on the skill broadly:
 3. Audit a deliberately flawed flow. It should distinguish functional defects, accessibility issues, and subjective preferences, with evidence and honest coverage limits.
 
 Record the actual outputs and failures. Change the instruction responsible for a demonstrated failure rather than accumulating universal rules.
+
+## Portable use
+
+Normal automatic selection is enabled where the agent supports it; the invocation
+examples are optional ways to request the skill. Infer paths, commands, stack,
+and scope from the target repository. Apply only relevant checks, and preserve
+existing user authorization rather than asking again because a skill was loaded.

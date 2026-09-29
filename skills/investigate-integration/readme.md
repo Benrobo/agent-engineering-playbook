@@ -28,3 +28,10 @@ Ask your agent: “Inspect this repository and the installed skill before using 
 Expected behavior: Provider truth, local state, and eligibility are checked before a cause is claimed; no replay occurs.
 
 Try this on an isolated branch or synthetic evidence first. Check actual artifacts and tool results, not just the agent's summary. If it fails, change the narrow instruction responsible and rerun the same scenario. Structural validity alone does not prove behavioral quality.
+
+## Portable use
+
+Normal automatic selection is enabled where the agent supports it; the invocation
+examples are optional ways to request the skill. Infer paths, commands, stack,
+and scope from the target repository. Apply only relevant checks, and preserve
+existing user authorization rather than asking again because a skill was loaded.
